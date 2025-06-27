@@ -4,5 +4,10 @@ body {
     padding: 5px;
     max-width: fit-content;
     text-align: justify;
-    background-color: aqua;
+    background-color: aqua ;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
 }

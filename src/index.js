@@ -57,7 +57,7 @@ function handleScore(scoreEl, btn) {
     resetGame();
   }
 }
-
+// Reset the game state when the score is reset
 function resetGame() {
   attempts = 0;
   highScore = 0;
