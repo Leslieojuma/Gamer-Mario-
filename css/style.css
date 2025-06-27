@@ -111,7 +111,7 @@ button:hover {
 .amiibo:hover {
     transform: translateY(-4px) scale(1.04);
     box-shadow: 0 6px 16px #0002;
-    background: #e0f7fa;
+    
 }
 
 .amiibo img {
