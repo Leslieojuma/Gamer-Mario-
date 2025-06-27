@@ -1,4 +1,7 @@
 {
+  "name": "Cageginx",
+  "author": "Leslie",
+  "license": "MIT",
   "dependencies": {
     "json-server": "^0.17.4"
   },
