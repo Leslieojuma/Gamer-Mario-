@@ -62,12 +62,15 @@ function renderAmiibos(amiibos) {
     listEl.appendChild(div);
   });
 }
+
+const scoreList = document.getElementById('score-list');
+let attemptScores = [];
 // This function handles the score earning logic
 // It updates the score, disables the button, and tracks attempts
 // It also calculates the high score and resets the game when max attempts are reached
 function handleScore(scoreEl, btn) {
   if (attempts >= maxAttempts) {
-    alert('🎮 Game Over!');
+    alert(' Game Over!');
     return;
   }
 
