@@ -1,16 +1,17 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    max-width: 100vw;
-    min-height: 100vh;
+    margin: auto;
+    padding: 5px;
+    max-width: fit-content;
     text-align: justify;
-    background: linear-gradient(135deg, aqua 0%, #e0f7fa 100%);
+    background-color: aqua;
+    transition: background 0.3s, color 0.3s;
 }
 
 .dark-mode {
     background-color: #121212;
     color: #ffffff;
+    transition: background 0.3s, color 0.3s;
 }
 
 #title {
@@ -19,43 +20,102 @@ body {
     font-weight: bold;
     font-size: 2.5em;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 8px #ffcccc;
+    text-shadow: 2px 2px 8px #ffcccc, 0 4px 12px #fff3;
+    margin-bottom: 1.5rem;
 }
-
 
 header { 
-    display: flex; justify-content: space-between; padding: 1rem; 
-    background-color: #f8f9fa;}
-.grid { display: flex; flex-wrap: wrap; gap: 1rem; }
-.card { border: 1px solid #ccc; padding: 1rem; width: 200px; }
-.avatar { width: 100%; }
-button { cursor: pointer; }
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 1rem; 
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 8px #0001;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 1rem; 
+}
+
+.card { 
+    border: 1px solid #ccc; 
+    padding: 1rem; 
+    width: 200px; 
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 8px #0001;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 6px 16px #0002;
+}
+
+.avatar { 
+    width: 100%; 
+    border-radius: 50%;
+    box-shadow: 0 2px 8px #0002;
+}
+
+button { 
+    cursor: pointer; 
+    padding: 0.5em 1.2em;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: #fff;
+    font-weight: bold;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 6px #0001;
+}
+button:hover {
+    background: #fdf903;
+    box-shadow: 0 4px 12px rgba(30, 142, 187, 0.133);
+}
 
 #status {
-  margin: 1rem;
+    margin: 1rem;
+    font-size: 1.1em;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    background: #e9ecef;
+    box-shadow: 0 1px 4px #0001;
 }
 .status.error {
-  color: #c00;
-  font-weight: bold;
+    color: #c00;
+    font-weight: bold;
+    background: #ffeaea;
+    border: 1px solid #c00;
 }
 
 #mario-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .amiibo {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 0.75rem;
-  background: #f9f9f9;
-  text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem;
+    background: #f9f9f9;
+    text-align: center;
+    box-shadow: 0 2px 8px #0001;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.amiibo:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 6px 16px #0002;
+    background: #e0f7fa;
 }
 
 .amiibo img {
-  max-width: 100%;
-  border-radius: 4px;
+    max-width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px #0001;
 }
-

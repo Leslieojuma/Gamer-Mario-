@@ -86,7 +86,7 @@ function handleScore(scoreEl, btn) {
   statusEl.textContent = `Attempts ${attempts}/${maxAttempts} — High Score: ${highScore}`;
 
   if (attempts === maxAttempts) {
-    alert(`✅ Final Best Score: ${highScore}`);
+    alert(`Final Best Score: ${highScore}`);
     resetGameDisplay();
   }
 }
@@ -97,4 +97,67 @@ function resetGameDisplay() {
   statusEl.textContent = 'Game reset — Play again!';
   document.querySelectorAll('.score span').forEach(el => el.textContent = '0');
   document.querySelectorAll('.earn').forEach(b => b.disabled = false);
+}
+
+/**
+ * Updates the scoreboard with the scores for each attempt.
+ * Allows user to delete individual scores.
+ * @param {number[]} attemptScores - Array of scores for each attempt
+ */
+function updateScoreboard(attemptScores) {
+  const scoreList = document.getElementById('score-list');
+  if (!scoreList) return;
+  scoreList.innerHTML = ''; // Clear previous scores
+
+  attemptScores.forEach((score, index) => {
+    const li = document.createElement('li');
+    li.textContent = `Attempt ${index + 1}: ${score} `;
+    const delBtn = document.createElement('button');
+    delBtn.textContent = 'Delete';
+    delBtn.addEventListener('click', () => {
+      attemptScores.splice(index, 1);
+      updateScoreboard(attemptScores);
+    });
+    li.appendChild(delBtn);
+    scoreList.appendChild(li);
+  });
+}
+
+// --- Integrate with game logic ---
+
+// Update handleScore to collect and display scores
+function handleScore(scoreEl, btn) {
+  if (attempts >= maxAttempts) {
+    alert(' Game Over!');
+    return;
+  }
+
+  const earned = Math.floor(Math.random() * 101);
+  scoreEl.textContent = earned;
+  btn.disabled = true;
+
+  attempts++;
+  attemptScores.push(earned); // Collect score
+  updateScoreboard(attemptScores); // Display scores
+
+  const total = attemptScores.reduce((sum, s) => sum + s, 0);
+  highScore = Math.max(highScore, total);
+
+  statusEl.textContent = `Attempts ${attempts}/${maxAttempts} — High Score: ${highScore}`;
+
+  if (attempts === maxAttempts) {
+    alert(`Final Best Score: ${highScore}`);
+    resetGameDisplay();
+  }
+}
+
+// Reset scoreboard on game reset
+function resetGameDisplay() {
+  attempts = 0;
+  highScore = 0;
+  attemptScores = [];
+  statusEl.textContent = 'Game reset — Play again!';
+  document.querySelectorAll('.score span').forEach(el => el.textContent = '0');
+  document.querySelectorAll('.earn').forEach(b => b.disabled = false);
+  updateScoreboard(attemptScores);
 }
